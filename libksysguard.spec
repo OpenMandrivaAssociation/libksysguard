@@ -1,10 +1,9 @@
 %define major 5
-%define libname %mklibname KF5Libksysguard %{major}
 %define devname %mklibname KF5Libksysguard -d
 %define debug_package %{nil}
 
 Name: libksysguard
-Version: 5.0.0
+Version: 5.0.1
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
@@ -42,23 +41,35 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 BuildRequires: ninja
-Requires: %{libname} = %{EVRD}
+%define ksgrdname %mklibname ksgrd 5
+%define ksignalplottername %mklibname ksignalplotter 5
+%define lsofuiname %mklibname lsofui 5
+%define processcorename %mklibname processcore 5
+%define processuiname %mklibname processui 5
+Requires: %{ksgrdname} = %{EVRD}
+Requires: %{ksignalplottername} = %{EVRD}
+Requires: %{lsofuiname} = %{EVRD}
+Requires: %{processcorename} = %{EVRD}
+Requires: %{processuiname} = %{EVRD}
+
+%libpackage ksgrd 5
+%libpackage ksignalplotter 5
+%libpackage lsofui 5
+%libpackage processcore 5
+%libpackage processui 5
 
 %description
 KDE Frameworks 5 system monitoring framework
 
-%package -n %{libname}
-Summary: KDE Frameworks system monitoring framework
-Group: System/Libraries
-Requires: %{name} = %{EVRD}
-
-%description -n %{libname}
-KDE Frameworks 5 system monitoring framework
 
 %package -n %{devname}
 Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
-Requires: %{libname} = %{EVRD}
+Requires: %{ksgrdname} = %{EVRD}
+Requires: %{ksignalplottername} = %{EVRD}
+Requires: %{lsofuiname} = %{EVRD}
+Requires: %{processcorename} = %{EVRD}
+Requires: %{processuiname} = %{EVRD}
 
 %description -n %{devname}
 Development files for the KDE Frameworks 5 system monitoring library
@@ -79,10 +90,6 @@ DESTDIR="%{buildroot}" ninja -C build install
 
 %files -f ksgrd.lang,ksysguardlsofwidgets.lang,processcore.lang,processui.lang
 %{_datadir}/ksysguard
-
-%files -n %{libname}
-%{_libdir}/*.so.%{major}
-%{_libdir}/*.so.4.98.0
 
 %files -n %{devname}
 %{_includedir}/*
