@@ -3,7 +3,7 @@
 %define debug_package %{nil}
 
 Name: libksysguard
-Version: 5.0.1
+Version: 5.0.95
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
@@ -90,6 +90,10 @@ DESTDIR="%{buildroot}" ninja -C build install
 
 %files -f ksgrd.lang,ksysguardlsofwidgets.lang,processcore.lang,processui.lang
 %{_datadir}/ksysguard
+%{_sysconfdir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
+%{_libdir}/libexec/kauth/ksysguardprocesslist_helper
+%{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
+%{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 
 %files -n %{devname}
 %{_includedir}/*
