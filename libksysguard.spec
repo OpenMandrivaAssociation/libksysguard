@@ -1,11 +1,12 @@
 %define major 5
 %define devname %mklibname KF5Libksysguard -d
 %define debug_package %{nil}
+%define plasmaver %(echo %{version} |cut -d. -f1-3)
 
 Name: libksysguard
-Version: 5.0.95
+Version: 5.1.0.1
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
+Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
 License: GPL
@@ -75,7 +76,7 @@ Requires: %{processuiname} = %{EVRD}
 Development files for the KDE Frameworks 5 system monitoring library
 
 %prep
-%setup -q
+%setup -qn %{name}-%{plasmaver}
 %cmake -G Ninja
 
 %build
