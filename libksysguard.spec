@@ -5,7 +5,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: libksysguard
-Version: 5.2.1
+Version: 5.2.2
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
@@ -16,29 +16,22 @@ BuildRequires: cmake
 BuildRequires: qmake5
 BuildRequires: extra-cmake-modules5
 BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: pkgconfig(Qt5Gui)
+BuildRequires: pkgconfig(Qt5Network)
+BuildRequires: pkgconfig(Qt5Script)
+BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(Qt5WebKit)
+BuildRequires: pkgconfig(Qt5WebKitWidgets)
+BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(Qt5X11Extras)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(zlib)
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(Gettext)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(Qt5)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(ZLIB)
-BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(KF5KDE4Support)
-BuildRequires: cmake(Qt5Core)
-BuildRequires: cmake(Qt5Network)
-BuildRequires: cmake(Qt5Qml)
-BuildRequires: cmake(Qt5Quick)
-BuildRequires: cmake(Qt5OpenGL)
-BuildRequires: cmake(Qt5PrintSupport)
-BuildRequires: cmake(Qt5WebKit)
-BuildRequires: cmake(Qt5Positioning)
-BuildRequires: cmake(Qt5Sensors)
-BuildRequires: cmake(Qt5WebKitWidgets)
-BuildRequires: cmake(Qt5Gui)
-BuildRequires: cmake(Qt5Widgets)
-BuildRequires: cmake(Qt5Script)
-BuildRequires: cmake(Qt5X11Extras)
-BuildRequires: cmake(Qt5Test)
 BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
