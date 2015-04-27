@@ -43,11 +43,11 @@ Requires: %{lsofuiname} = %{EVRD}
 Requires: %{processcorename} = %{EVRD}
 Requires: %{processuiname} = %{EVRD}
 
-%libpackage ksgrd 7
-%libpackage ksignalplotter 7
-%libpackage lsofui 7
-%libpackage processcore 7
-%libpackage processui 7
+%libpackage ksgrd 5
+%libpackage ksignalplotter 5
+%libpackage lsofui 5
+%libpackage processcore 5
+%libpackage processui 5
 
 %description
 KDE Frameworks 5 system monitoring framework.
