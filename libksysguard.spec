@@ -1,4 +1,3 @@
-%define major 5
 %define devname %mklibname KF5Libksysguard -d
 %define debug_package %{nil}
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
@@ -33,22 +32,22 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 
-%define ksgrdname %mklibname ksgrd 5
-%define ksignalplottername %mklibname ksignalplotter 5
-%define lsofuiname %mklibname lsofui 5
-%define processcorename %mklibname processcore 5
-%define processuiname %mklibname processui 5
+%define ksgrdname %mklibname ksgrd 7
+%define ksignalplottername %mklibname ksignalplotter 7
+%define lsofuiname %mklibname lsofui 7
+%define processcorename %mklibname processcore 7
+%define processuiname %mklibname processui 7
 Requires: %{ksgrdname} = %{EVRD}
 Requires: %{ksignalplottername} = %{EVRD}
 Requires: %{lsofuiname} = %{EVRD}
 Requires: %{processcorename} = %{EVRD}
 Requires: %{processuiname} = %{EVRD}
 
-%libpackage ksgrd 5
-%libpackage ksignalplotter 5
-%libpackage lsofui 5
-%libpackage processcore 5
-%libpackage processui 5
+%libpackage ksgrd 7
+%libpackage ksignalplotter 7
+%libpackage lsofui 7
+%libpackage processcore 7
+%libpackage processui 7
 
 %description
 KDE Frameworks 5 system monitoring framework.
