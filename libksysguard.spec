@@ -5,16 +5,13 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: libksysguard
-Version: 5.2.2
+Version: 5.2.95
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
-BuildRequires: cmake
-BuildRequires: qmake5
-BuildRequires: extra-cmake-modules5
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5DBus)
 BuildRequires: pkgconfig(Qt5Gui)
@@ -35,7 +32,7 @@ BuildRequires: cmake(KF5KDE4Support)
 BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
-BuildRequires: ninja
+
 %define ksgrdname %mklibname ksgrd 5
 %define ksignalplottername %mklibname ksignalplotter 5
 %define lsofuiname %mklibname lsofui 5
@@ -54,7 +51,7 @@ Requires: %{processuiname} = %{EVRD}
 %libpackage processui 5
 
 %description
-KDE Frameworks 5 system monitoring framework
+KDE Frameworks 5 system monitoring framework.
 
 
 %package -n %{devname}
@@ -67,18 +64,17 @@ Requires: %{processcorename} = %{EVRD}
 Requires: %{processuiname} = %{EVRD}
 
 %description -n %{devname}
-Development files for the KDE Frameworks 5 system monitoring library
+Development files for the KDE Frameworks 5 system monitoring library.
 
 %prep
 %setup -qn %{name}-%{plasmaver}
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
-
+%cmake_kde5
 %build
-ninja -C build
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install
+%ninja_install -C build
+
 %find_lang ksgrd
 %find_lang ksysguardlsofwidgets
 %find_lang processcore
