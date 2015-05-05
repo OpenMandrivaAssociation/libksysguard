@@ -32,11 +32,11 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 
-Requires: %{libksgrdname} = %{EVRD}
-Requires: %{libksignalplottername} = %{EVRD}
-Requires: %{liblsofuiname} = %{EVRD}
-Requires: %{libprocesscorename} = %{EVRD}
-Requires: %{libprocessuiname} = %{EVRD}
+Requires: %{libksgrd} = %{EVRD}
+Requires: %{libksignalplotter} = %{EVRD}
+Requires: %{liblsofui} = %{EVRD}
+Requires: %{libprocesscore} = %{EVRD}
+Requires: %{libprocessui} = %{EVRD}
 
 %description
 KDE Frameworks 5 system monitoring framework.
