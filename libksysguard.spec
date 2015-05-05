@@ -136,11 +136,11 @@ Plasma 5 KDE System Guard shared library.
 %package -n %{devname}
 Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
-Requires: %{libksgrdname} = %{EVRD}
-Requires: %{libksignalplottername} = %{EVRD}
+Requires: %{libksgrd} = %{EVRD}
+Requires: %{libksignalplotter} = %{EVRD}
 Requires: %{liblsofuiname} = %{EVRD}
-Requires: %{libprocesscorename} = %{EVRD}
-Requires: %{libprocessuiname} = %{EVRD}
+Requires: %{libprocesscore} = %{EVRD}
+Requires: %{libprocessui} = %{EVRD}
 
 %description -n %{devname}
 Development files for the KDE Frameworks 5 system monitoring library.
