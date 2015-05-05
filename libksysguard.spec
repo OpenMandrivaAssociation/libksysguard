@@ -3,6 +3,17 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
+%define ksgrd_major 7
+%define libksgrd %mklibname ksgrd %{ksgrd_major}
+%define ksignalplotter_major 7
+%define libksignalplotter %mklibname ksignalplotter %{ksignalplotter_major}
+%define lsofui_major 7
+%define liblsofui %mklibname lsofui %{lsofui_major}
+%define processcore_major 7
+%define libprocesscore %mklibname processcore %{processcore_major}
+%define processui_major 7
+%define libprocessui %mklibname processui %{processui_major}
+
 Name: libksysguard
 Version: 5.3.0
 Release: 1
@@ -50,9 +61,6 @@ KDE Frameworks 5 system monitoring framework.
 
 #----------------------------------------------------------------------------
 
-%define ksgrd_major 7
-%define libksgrd %mklibname ksgrd %{ksgrd_major}
-
 %package -n %{libksgrd}
 Summary: Plasma 5 KDE System Guard shared library
 Group: System/Libraries
@@ -66,9 +74,6 @@ Plasma 5 KDE System Guard shared library.
 %{_libdir}/libksgrd.so.%{version}
 
 #----------------------------------------------------------------------------
-
-%define ksignalplotter_major 7
-%define libksignalplotter %mklibname ksignalplotter %{ksignalplotter_major}
 
 %package -n %{libksignalplotter}
 Summary: Plasma 5 KDE System Guard shared library
@@ -84,9 +89,6 @@ Plasma 5 KDE System Guard shared library.
 
 #----------------------------------------------------------------------------
 
-%define lsofui_major 7
-%define liblsofui %mklibname lsofui %{lsofui_major}
-
 %package -n %{liblsofui}
 Summary: Plasma 5 KDE System Guard shared library
 Group: System/Libraries
@@ -101,9 +103,6 @@ Plasma 5 KDE System Guard shared library.
 
 #----------------------------------------------------------------------------
 
-%define processcore_major 7
-%define libprocesscore %mklibname processcore %{processcore_major}
-
 %package -n %{libprocesscore}
 Summary: Plasma 5 KDE System Guard shared library
 Group: System/Libraries
@@ -117,9 +116,6 @@ Plasma 5 KDE System Guard shared library.
 %{_libdir}/libprocesscore.so.%{version}
 
 #----------------------------------------------------------------------------
-
-%define processui_major 7
-%define libprocessui %mklibname processui %{processui_major}
 
 %package -n %{libprocessui}
 Summary: Plasma 5 KDE System Guard shared library
@@ -138,7 +134,7 @@ Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libksignalplotter} = %{EVRD}
-Requires: %{liblsofuiname} = %{EVRD}
+Requires: %{liblsofu} = %{EVRD}
 Requires: %{libprocesscore} = %{EVRD}
 Requires: %{libprocessui} = %{EVRD}
 
