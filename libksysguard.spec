@@ -134,7 +134,7 @@ Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libksignalplotter} = %{EVRD}
-Requires: %{liblsofu} = %{EVRD}
+Requires: %{liblsofui} = %{EVRD}
 Requires: %{libprocesscore} = %{EVRD}
 Requires: %{libprocessui} = %{EVRD}
 
