@@ -32,38 +32,123 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 
-%define ksgrdname %mklibname ksgrd 7
-%define ksignalplottername %mklibname ksignalplotter 7
-%define lsofuiname %mklibname lsofui 7
-%define processcorename %mklibname processcore 7
-%define processuiname %mklibname processui 7
-Requires: %{ksgrdname} = %{EVRD}
-Requires: %{ksignalplottername} = %{EVRD}
-Requires: %{lsofuiname} = %{EVRD}
-Requires: %{processcorename} = %{EVRD}
-Requires: %{processuiname} = %{EVRD}
-
-%libpackage ksgrd 7
-%libpackage ksignalplotter 7
-%libpackage lsofui 7
-%libpackage processcore 7
-%libpackage processui 7
+Requires: %{libksgrdname5} = %{EVRD}
+Requires: %{libksignalplottername5} = %{EVRD}
+Requires: %{liblsofuiname5} = %{EVRD}
+Requires: %{libprocesscorename5} = %{EVRD}
+Requires: %{libprocessuiname5} = %{EVRD}
 
 %description
 KDE Frameworks 5 system monitoring framework.
 
+%files -f ksgrd.lang,ksysguardlsofwidgets.lang,processcore.lang,processui.lang
+%{_datadir}/ksysguard/scripts
+%{_libexecdir}/kauth/ksysguardprocesslist_helper
+%{_sysconfdir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
+%{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
+%{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
+
+#----------------------------------------------------------------------------
+
+%define ksgrd5_major 7
+%define libksgrd5 %mklibname ksgrd5_ %{ksgrd5_major}
+
+%package -n %{libksgrd5}
+Summary: Plasma 5 KDE System Guard shared library
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %{libksgrd5}
+Plasma 5 KDE System Guard shared library.
+
+%files -n %{libksgrd5}
+%{_libdir}/libksgrd5.so.%{ksgrd5_major}
+%{_libdir}/libksgrd5.so.%{version}
+
+#----------------------------------------------------------------------------
+
+%define ksignalplotter5_major 7
+%define libksignalplotter5 %mklibname ksignalplotter5_ %{ksignalplotter5_major}
+
+%package -n %{libksignalplotter5}
+Summary: Plasma 5 KDE System Guard shared library
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %{libksignalplotter5}
+Plasma 5 KDE System Guard shared library.
+
+%files -n %{libksignalplotter5}
+%{_libdir}/libksignalplotter5.so.%{ksignalplotter5_major}
+%{_libdir}/libksignalplotter5.so.%{version}
+
+#----------------------------------------------------------------------------
+
+%define lsofui5_major 7
+%define liblsofui5 %mklibname lsofui5_ %{lsofui5_major}
+
+%package -n %{liblsofui5}
+Summary: Plasma 5 KDE System Guard shared library
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %{liblsofui5}
+Plasma 5 KDE System Guard shared library.
+
+%files -n %{liblsofui5}
+%{_libdir}/liblsofui5.so.%{lsofui5_major}
+%{_libdir}/liblsofui5.so.%{version}
+
+#----------------------------------------------------------------------------
+
+%define processcore5_major 7
+%define libprocesscore5 %mklibname processcore5_ %{processcore5_major}
+
+%package -n %{libprocesscore5}
+Summary: Plasma 5 KDE System Guard shared library
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %{libprocesscore5}
+Plasma 5 KDE System Guard shared library.
+
+%files -n %{libprocesscore5}
+%{_libdir}/libprocesscore5.so.%{processcore5_major}
+%{_libdir}/libprocesscore5.so.%{version}
+
+#----------------------------------------------------------------------------
+
+%define processui5_major 7
+%define libprocessui5 %mklibname processui5_ %{processui5_major}
+
+%package -n %{libprocessui5}
+Summary: Plasma 5 KDE System Guard shared library
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %{libprocessui5}
+Plasma 5 KDE System Guard shared library.
+
+%files -n %{libprocessui5}
+%{_libdir}/libprocessui5.so.%{processui5_major}
+%{_libdir}/libprocessui5.so.%{version}
 
 %package -n %{devname}
 Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
-Requires: %{ksgrdname} = %{EVRD}
-Requires: %{ksignalplottername} = %{EVRD}
-Requires: %{lsofuiname} = %{EVRD}
-Requires: %{processcorename} = %{EVRD}
-Requires: %{processuiname} = %{EVRD}
+Requires: %{libksgrdname5} = %{EVRD}
+Requires: %{libksignalplottername5} = %{EVRD}
+Requires: %{liblsofuiname5} = %{EVRD}
+Requires: %{libprocesscorename5} = %{EVRD}
+Requires: %{libprocessuiname5} = %{EVRD}
 
 %description -n %{devname}
 Development files for the KDE Frameworks 5 system monitoring library.
+
+%files -n %{devname}
+%{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/cmake/KF5*
 
 %prep
 %setup -qn %{name}-%{plasmaver}
@@ -80,14 +165,5 @@ Development files for the KDE Frameworks 5 system monitoring library.
 %find_lang processcore
 %find_lang processui
 
-%files -f ksgrd.lang,ksysguardlsofwidgets.lang,processcore.lang,processui.lang
-%{_datadir}/ksysguard
-%{_sysconfdir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
-%{_libdir}/libexec/kauth/ksysguardprocesslist_helper
-%{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
-%{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 
-%files -n %{devname}
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/cmake/KF5*
+
