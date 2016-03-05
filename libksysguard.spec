@@ -22,6 +22,7 @@ Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
+Patch0: libksysguard-5.5.5-fix-isnan.patch
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5DBus)
 BuildRequires: pkgconfig(Qt5Gui)
@@ -148,6 +149,7 @@ Development files for the KDE Frameworks 5 system monitoring library.
 
 %prep
 %setup -qn %{name}-%{plasmaver}
+%apply_patches
 %cmake_kde5
 
 %build
