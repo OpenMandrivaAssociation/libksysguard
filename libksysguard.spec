@@ -15,7 +15,7 @@
 %define libprocessui %mklibname processui %{processui_major}
 
 Name: libksysguard
-Version: 5.6.5
+Version: 5.7.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
@@ -158,7 +158,7 @@ Development files for the KDE Frameworks 5 system monitoring library.
 %install
 %ninja_install -C build
 
-%find_lang ksgrd
-%find_lang ksysguardlsofwidgets
-%find_lang processcore
-%find_lang processui
+%find_lang ksgrd || touch ksgrd.lang
+%find_lang ksysguardlsofwidgets || touch ksysguardlsofwidgets.lang
+%find_lang processcore || touch processcore.lang
+%find_lang processui || touch processui.lang
