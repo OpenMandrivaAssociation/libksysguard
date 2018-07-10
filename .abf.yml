@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   libksysguard-5.12.3.tar.xz: 065ec1cd97a636328387ded521390e91a84a354b
+sources:
+  libksysguard-5.12.6.tar.xz: 58dbf301617d56c32b8476dcf61410f730b29d64
