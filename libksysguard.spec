@@ -43,6 +43,7 @@ BuildRequires: cmake(KF5KDE4Support)
 BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
+BuildRequires: cmake(KF5GlobalAccel)
 
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libksignalplotter} = %{EVRD}
