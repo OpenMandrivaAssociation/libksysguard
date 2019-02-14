@@ -16,7 +16,7 @@
 
 Name: libksysguard
 Version: 5.15.0
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
@@ -29,8 +29,8 @@ BuildRequires: pkgconfig(Qt5Gui)
 BuildRequires: pkgconfig(Qt5Network)
 BuildRequires: pkgconfig(Qt5Script)
 BuildRequires: pkgconfig(Qt5Test)
-BuildRequires: pkgconfig(Qt5WebKit)
-BuildRequires: pkgconfig(Qt5WebKitWidgets)
+BuildRequires: pkgconfig(Qt5WebEngine)
+BuildRequires: pkgconfig(Qt5WebEngineWidgets)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5X11Extras)
 BuildRequires: pkgconfig(x11)
