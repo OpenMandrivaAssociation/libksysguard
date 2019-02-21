@@ -15,8 +15,8 @@
 %define libprocessui %mklibname processui %{processui_major}
 
 Name: libksysguard
-Version: 5.15.0
-Release: 2
+Version: 5.15.1
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
