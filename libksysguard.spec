@@ -15,8 +15,8 @@
 %define libprocessui %mklibname processui %{processui_major}
 
 Name: libksysguard
-Version:	5.18.3
-Release:	2
+Version:	5.18.4.1
+Release:	1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Patch0:	libksysguard-5.18.3-qt-5.15.patch
 Summary: KDE Frameworks 5 system monitoring framework
@@ -75,7 +75,7 @@ Plasma 5 KDE System Guard shared library.
 
 %files -n %{libksgrd}
 %{_libdir}/libksgrd.so.%{ksgrd_major}
-%{_libdir}/libksgrd.so.%{version}
+%{_libdir}/libksgrd.so.5*
 
 #----------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ Plasma 5 KDE System Guard shared library.
 
 %files -n %{libksignalplotter}
 %{_libdir}/libksignalplotter.so.%{ksignalplotter_major}
-%{_libdir}/libksignalplotter.so.%{version}
+%{_libdir}/libksignalplotter.so.5*
 
 #----------------------------------------------------------------------------
 
@@ -103,7 +103,7 @@ Plasma 5 KDE System Guard shared library.
 
 %files -n %{liblsofui}
 %{_libdir}/liblsofui.so.%{lsofui_major}
-%{_libdir}/liblsofui.so.%{version}
+%{_libdir}/liblsofui.so.5*
 
 #----------------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ Plasma 5 KDE System Guard shared library.
 
 %files -n %{libprocesscore}
 %{_libdir}/libprocesscore.so.%{processcore_major}
-%{_libdir}/libprocesscore.so.%{version}
+%{_libdir}/libprocesscore.so.5*
 
 #----------------------------------------------------------------------------
 
@@ -131,7 +131,7 @@ Plasma 5 KDE System Guard shared library.
 
 %files -n %{libprocessui}
 %{_libdir}/libprocessui.so.%{processui_major}
-%{_libdir}/libprocessui.so.%{version}
+%{_libdir}/libprocessui.so.5*
 
 %package -n %{devname}
 Summary: Development files for the KDE Frameworks 5 system monitoring library
@@ -151,7 +151,7 @@ Development files for the KDE Frameworks 5 system monitoring library.
 %{_libdir}/cmake/KF5*
 
 %prep
-%autosetup -p1 -n %{name}-%{plasmaver}
+%autosetup -p1
 %cmake_kde5
 
 %build
