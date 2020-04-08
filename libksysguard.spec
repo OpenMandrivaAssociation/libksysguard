@@ -45,6 +45,7 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5GlobalAccel)
+BuildRequires: qt5-qtpositioning
 
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libksignalplotter} = %{EVRD}
