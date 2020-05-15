@@ -53,11 +53,20 @@ BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5GlobalAccel)
 BuildRequires: qt5-qtpositioning
 
+Obsoletes: %mklibname ksignalplotter 7
+Obsoletes: %mklibname lsofui 7
+Obsoletes: %mklibname processcore 7
+Obsoletes: %mklibname processui 7
+Obsoletes: %mklibname ksgrd 7
+
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libksignalplotter} = %{EVRD}
 Requires: %{liblsofui} = %{EVRD}
 Requires: %{libprocesscore} = %{EVRD}
 Requires: %{libprocessui} = %{EVRD}
+Requires: %{libformatter} = %{EVRD}
+Requires: %{libsensorfaces} = %{EVRD}
+Requires: %{libsensors} = %{EVRD}
 
 %description
 KDE Frameworks 5 system monitoring framework.
