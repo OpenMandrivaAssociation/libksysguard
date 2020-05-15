@@ -3,19 +3,25 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-%define ksgrd_major 7
+%define ksgrd_major 9
 %define libksgrd %mklibname ksgrd %{ksgrd_major}
-%define ksignalplotter_major 7
+%define ksignalplotter_major 9
 %define libksignalplotter %mklibname ksignalplotter %{ksignalplotter_major}
-%define lsofui_major 7
+%define lsofui_major 9
 %define liblsofui %mklibname lsofui %{lsofui_major}
-%define processcore_major 7
+%define processcore_major 9
 %define libprocesscore %mklibname processcore %{processcore_major}
-%define processui_major 7
+%define processui_major 9
 %define libprocessui %mklibname processui %{processui_major}
+%define formatter_major 1
+%define libformatter %mklibname KSysGuardFormatter %{formatter_major}
+%define sensorfaces_major 1
+%define libsensorfaces %mklibname KSysGuardSensorFaces %{sensorfaces_major}
+%define sensors_major 1
+%define libsensors %mklibname KSysGuardSensors %{sensors_major}
 
 Name: libksysguard
-Version:	5.18.5
+Version:	5.18.90
 Release:	1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Patch0:	libksysguard-5.18.3-qt-5.15.patch
@@ -56,13 +62,18 @@ Requires: %{libprocessui} = %{EVRD}
 %description
 KDE Frameworks 5 system monitoring framework.
 
-%files -f ksgrd.lang -f ksysguardlsofwidgets.lang -f processcore.lang -f processui.lang
+%files -f ksgrd.lang
 %{_datadir}/qlogging-categories5/libksysguard.categories
 %{_datadir}/ksysguard/scripts
 %{_libdir}/libexec/kauth/ksysguardprocesslist_helper
 %{_datadir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
 %{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
+%{_libdir}/qt5/plugins/kpackage/packagestructure/sensorface_packagestructure.so
+%{_libdir}/qt5/qml/org/kde/ksysguard
+%{_datadir}/knsrcfiles/systemmonitor-faces.knsrc
+%{_datadir}/knsrcfiles/systemmonitor-presets.knsrc
+%{_datadir}/ksysguard/sensorfaces
 
 #----------------------------------------------------------------------------
 
@@ -134,6 +145,50 @@ Plasma 5 KDE System Guard shared library.
 %{_libdir}/libprocessui.so.%{processui_major}
 %{_libdir}/libprocessui.so.5*
 
+#----------------------------------------------------------------------------
+
+%package -n %{libformatter}
+Summary: Plasma 5 KDE System Guard formatting library
+Group: System/Libraries
+Requires: %{name} = %{EVRD}
+
+%description -n %{libformatter}
+Plasma 5 KDE System Guard formatting shared library.
+
+%files -n %{libformatter}
+%{_libdir}/libKSysGuardFormatter.so.%{formatter_major}
+%{_libdir}/libKSysGuardFormatter.so.5*
+
+#----------------------------------------------------------------------------
+
+%package -n %{libsensorfaces}
+Summary: Plasma 5 KDE System Guard sensor faces shared library
+Group: System/Libraries
+Requires: %{name} = %{EVRD}
+
+%description -n %{libsensorfaces}
+Plasma 5 KDE System Guard sensor faces shared library.
+
+%files -n %{libsensorfaces}
+%{_libdir}/libKSysGuardSensorFaces.so.%{sensorfaces_major}
+%{_libdir}/libKSysGuardSensorFaces.so.5*
+
+#----------------------------------------------------------------------------
+
+%package -n %{libsensors}
+Summary: Plasma 5 KDE System Guard sensors shared library
+Group: System/Libraries
+Requires: %{name} = %{EVRD}
+
+%description -n %{libsensors}
+Plasma 5 KDE System Guard sensors shared library.
+
+%files -n %{libsensors}
+%{_libdir}/libKSysGuardSensors.so.%{sensors_major}
+%{_libdir}/libKSysGuardSensors.so.5*
+
+#----------------------------------------------------------------------------
+
 %package -n %{devname}
 Summary: Development files for the KDE Frameworks 5 system monitoring library
 Group: Development/KDE and Qt
@@ -142,6 +197,9 @@ Requires: %{libksignalplotter} = %{EVRD}
 Requires: %{liblsofui} = %{EVRD}
 Requires: %{libprocesscore} = %{EVRD}
 Requires: %{libprocessui} = %{EVRD}
+Requires: %{libformatter} = %{EVRD}
+Requires: %{libsensorfaces} = %{EVRD}
+Requires: %{libsensors} = %{EVRD}
 
 %description -n %{devname}
 Development files for the KDE Frameworks 5 system monitoring library.
@@ -150,6 +208,7 @@ Development files for the KDE Frameworks 5 system monitoring library.
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5*
+%{_libdir}/cmake/KSysGuard
 
 %prep
 %autosetup -p1
@@ -161,7 +220,4 @@ Development files for the KDE Frameworks 5 system monitoring library.
 %install
 %ninja_install -C build
 
-%find_lang ksgrd || touch ksgrd.lang
-%find_lang ksysguardlsofwidgets || touch ksysguardlsofwidgets.lang
-%find_lang processcore || touch processcore.lang
-%find_lang processui || touch processui.lang
+%find_lang ksgrd --all-name --with-html
