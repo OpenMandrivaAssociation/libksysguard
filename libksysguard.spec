@@ -51,6 +51,8 @@ BuildRequires: cmake(KF5Plasma)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5GlobalAccel)
+BuildRequires: cmake(KF5Declarative)
+BuildRequires: cmake(KF5NewStuff)
 BuildRequires: qt5-qtpositioning
 
 Obsoletes: %mklibname ksignalplotter 7
