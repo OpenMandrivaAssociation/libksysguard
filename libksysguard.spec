@@ -22,7 +22,7 @@
 %define libsensors %mklibname KSysGuardSensors %{sensors_major}
 
 Name: libksysguard
-Version:	5.20.2
+Version:	5.20.3
 Release:	1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Patch0:	libksysguard-5.18.3-qt-5.15.patch
@@ -82,7 +82,6 @@ KDE Frameworks 5 system monitoring framework.
 %{_libdir}/libexec/kauth/ksysguardprocesslist_helper
 %{_datadir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
 %{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
-%{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 %{_libdir}/qt5/plugins/kpackage/packagestructure/sensorface_packagestructure.so
 %{_libdir}/qt5/qml/org/kde/ksysguard
 %{_datadir}/knsrcfiles/systemmonitor-faces.knsrc
