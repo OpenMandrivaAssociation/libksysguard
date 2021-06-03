@@ -1,6 +1,5 @@
 %define devname %mklibname KF5Libksysguard -d
 %define desname %mklibname KF5Libksysguard-designer -d
-%define debug_package %{nil}
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
@@ -22,7 +21,7 @@
 %define libsensors %mklibname KSysGuardSensors %{sensors_major}
 
 Name: libksysguard
-Version:	5.21.5
+Version:	5.22.0
 Release:	1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Patch0:	libksysguard-5.18.3-qt-5.15.patch
@@ -80,7 +79,10 @@ KDE Frameworks 5 system monitoring framework.
 %{_datadir}/qlogging-categories5/libksysguard.categories
 %{_datadir}/ksysguard/scripts
 %{_libdir}/libexec/kauth/ksysguardprocesslist_helper
+%dir %{_libdir}/libexec/ksysguard
+%{_libdir}/libexec/ksysguard/ksgrd_network_helper
 %{_datadir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
+%{_datadir}/dbus-1/interfaces/org.kde.ksystemstats.xml
 %{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_libdir}/qt5/plugins/kpackage/packagestructure/sensorface_packagestructure.so
 %{_libdir}/qt5/qml/org/kde/ksysguard
@@ -88,6 +90,10 @@ KDE Frameworks 5 system monitoring framework.
 %{_datadir}/knsrcfiles/systemmonitor-presets.knsrc
 %{_datadir}/ksysguard/sensorfaces
 %{_datadir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
+%dir %{_libdir}/qt5/plugins/ksysguard
+%dir %{_libdir}/qt5/plugins/ksysguard/process
+%{_libdir}/qt5/plugins/ksysguard/process/ksysguard_plugin_network.so
+%{_libdir}/qt5/plugins/ksysguard/process/ksysguard_plugin_nvidia.so
 
 #----------------------------------------------------------------------------
 
@@ -102,6 +108,8 @@ Plasma 5 KDE System Guard shared library.
 %files -n %{libksgrd}
 %{_libdir}/libksgrd.so.%{ksgrd_major}
 %{_libdir}/libksgrd.so.5*
+%{_libdir}/libKSysGuardSystemStats.so.1
+%{_libdir}/libKSysGuardSystemStats.so.5*
 
 #----------------------------------------------------------------------------
 
