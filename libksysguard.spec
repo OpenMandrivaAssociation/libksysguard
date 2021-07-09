@@ -1,7 +1,7 @@
 %define devname %mklibname KF5Libksysguard -d
 %define desname %mklibname KF5Libksysguard-designer -d
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 %define ksgrd_major 9
 %define libksgrd %mklibname ksgrd %{ksgrd_major}
@@ -22,7 +22,7 @@
 
 Name: libksysguard
 Version:	5.22.3
-Release:	1
+Release:	2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Patch0:	libksysguard-5.18.3-qt-5.15.patch
 Summary: KDE Frameworks 5 system monitoring framework
@@ -58,6 +58,7 @@ BuildRequires: cmake(KF5NewStuff)
 BuildRequires: pkgconfig(libnl-3.0)
 BuildRequires: pkgconfig(libpcap)
 BuildRequires: qt5-qtpositioning
+BuildRequires: pkgconfig(libcap)
 
 Obsoletes: %mklibname ksignalplotter 7
 Obsoletes: %mklibname lsofui 7
@@ -240,7 +241,7 @@ Group: Development/KDE and Qt
 Requires: %{devname} = %{EVRD}
 
 %description -n %{desname}
-Qt Designer plugin integrating KSysguard's widgets
+Qt Designer plugin integrating KSysguard's widgets.
 
 %files -n %{desname}
 %{_libdir}/qt5/plugins/designer/ksignalplotter5widgets.so
