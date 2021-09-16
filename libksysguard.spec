@@ -21,10 +21,9 @@
 %define libsensors %mklibname KSysGuardSensors %{sensors_major}
 
 Name: libksysguard
-Version:	5.22.5
+Version:	5.22.90
 Release:	1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
-Patch0:	libksysguard-5.18.3-qt-5.15.patch
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
 License: GPL
