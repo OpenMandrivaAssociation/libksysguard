@@ -59,6 +59,7 @@ BuildRequires: pkgconfig(libnl-3.0)
 BuildRequires: pkgconfig(libpcap)
 BuildRequires: qt5-qtpositioning
 BuildRequires: pkgconfig(libcap)
+BuildRequires: lm_sensors-devel
 
 Obsoletes: %mklibname ksignalplotter 7
 Obsoletes: %mklibname lsofui 7
