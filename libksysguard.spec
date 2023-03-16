@@ -22,7 +22,7 @@
 
 Name: libksysguard
 Version:	5.27.3
-Release:	1
+Release:	2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
@@ -84,7 +84,7 @@ KDE Frameworks 5 system monitoring framework.
 %{_datadir}/ksysguard/scripts
 %{_libdir}/libexec/kauth/ksysguardprocesslist_helper
 %dir %{_libdir}/libexec/ksysguard
-%{_libdir}/libexec/ksysguard/ksgrd_network_helper
+%caps(cap_net_raw+ep) %{_libdir}/libexec/ksysguard/ksgrd_network_helper
 %{_datadir}/dbus-1/system.d/org.kde.ksysguard.processlisthelper.conf
 %{_datadir}/dbus-1/interfaces/org.kde.ksystemstats.xml
 %{_datadir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
