@@ -22,7 +22,7 @@
 
 Name: libksysguard
 Version:	5.27.3
-Release:	2
+Release:	3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Frameworks 5 system monitoring framework
 URL: http://kde.org/
