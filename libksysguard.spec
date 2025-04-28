@@ -22,9 +22,9 @@
 %define libprocessui %mklibname processui
 %define desname %mklibname KF6Libksysguard-designer -d
 
-Name: plasma6-libksysguard
+Name:		libksysguard
 Version:	6.3.4
-Release:	%{?git:0.%{git}.}2
+Release:	%{?git:0.%{git}.}3
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/plasma/libksysguard/-/archive/%{gitbranch}/libksysguard-%{gitbranchd}.tar.bz2#/libksysguard-%{git}.tar.bz2
 %else
@@ -72,6 +72,10 @@ BuildRequires: pkgconfig(libcap)
 BuildRequires: lm_sensors-devel
 BuildRequires: gettext
 
+BuildSystem: cmake
+BuildOption: -DBUILD_QCH:BOOL=ON
+BuildOption: -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 Requires: kf6-kquickcharts
 Requires: %{libksgrd} = %{EVRD}
 Requires: %{libprocesscore} = %{EVRD}
@@ -82,10 +86,13 @@ Obsoletes: %{libksignalplotter} < %{EVRD}
 Obsoletes: %{liblsofui} < %{EVRD}
 Obsoletes: %{libprocessui} < %{EVRD}
 
+# Renamed after 6.0 2025-04-28
+%rename plasma6-libksysguard
+
 %description
 KDE Frameworks 6 system monitoring framework.
 
-%files -f ksgrd.lang
+%files -f %{name}.lang
 %{_datadir}/qlogging-categories6/libksysguard.categories
 %{_datadir}/dbus-1/interfaces/org.kde.ksystemstats1.xml
 %{_libdir}/libexec/kf6/kauth/ksysguardprocesslist_helper
@@ -194,19 +201,3 @@ Development files for the KDE Frameworks 6 system monitoring library.
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/KSysGuard
-
-%prep
-%autosetup -p1 -n libksysguard-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-
-%find_lang ksgrd --all-name --with-html
