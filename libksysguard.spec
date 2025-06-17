@@ -69,6 +69,7 @@ BuildRequires: cmake(KF6JobWidgets)
 BuildRequires: pkgconfig(libnl-3.0)
 BuildRequires: pkgconfig(libpcap)
 BuildRequires: pkgconfig(libcap)
+BuildRequires: pkgconfig(libdrm)
 BuildRequires: lm_sensors-devel
 BuildRequires: gettext
 
