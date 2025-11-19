@@ -23,7 +23,7 @@
 %define desname %mklibname KF6Libksysguard-designer -d
 
 Name:		libksysguard
-Version:	6.5.2
+Version:	6.5.3
 Release:	%{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/plasma/libksysguard/-/archive/%{gitbranch}/libksysguard-%{gitbranchd}.tar.bz2#/libksysguard-%{git}.tar.bz2
