@@ -5,9 +5,9 @@
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
-%define ksgrd_major 10
+%define ksgrd_major 2
 %define libksgrd %mklibname KSysGuardSystemStats
-%define processcore_major 10
+%define processcore_major 11
 %define libprocesscore %mklibname processcore
 %define formatter_major 2
 %define libformatter %mklibname KSysGuardFormatter
@@ -23,7 +23,7 @@
 %define desname %mklibname KF6Libksysguard-designer -d
 
 Name:		libksysguard
-Version:	6.6.5
+Version:	6.7.0
 Release:	%{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/plasma/libksysguard/-/archive/%{gitbranch}/libksysguard-%{gitbranchd}.tar.bz2#/libksysguard-%{git}.tar.bz2
@@ -94,6 +94,7 @@ Obsoletes: %{libprocessui} < %{EVRD}
 KDE Frameworks 6 system monitoring framework.
 
 %files -f %{name}.lang
+%{_bindir}/ksysguard-identify
 %{_datadir}/qlogging-categories6/libksysguard.categories
 %{_datadir}/dbus-1/interfaces/org.kde.ksystemstats1.xml
 %{_libdir}/libexec/kf6/kauth/ksysguardprocesslist_helper
